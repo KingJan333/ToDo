@@ -1,26 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <transition name="moveInUp">
+    <router-view />
+  </transition>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import StartPage from "@/components/StartPage.vue";
+  import TodoApp from "@/components/TodoApp.vue";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    name: "App",
+    components: {
+      StartPage,
+      TodoApp,
+    },
+  };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  body {
+    margin: 0;
+  }
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+  }
+.moveInUp-leave-active{
+  animation: moveInUp .3s ease-in;
+}
+@keyframes moveInUp{
+ 0%{
+  transform: translateY(0);
+ }
+  100%{
+  transform: translateY(-400px);
+ }
 }
 </style>
